@@ -6,43 +6,37 @@ package se.kth.iv1350.pointOfSale.dto;
 public class ItemDTO {
     private final String name;
     private final int itemID;
-    private final int itemQuantity;
     private final String itemDescription;
-    private final int itemPrice;
+    private final double itemPrice;
+    private final double VAT;
 
     /**
      * Creates a new instance representing an item.
      * @param name The name of the item, e.g. <code>Potatoe</code>
      * @param itemID The identifying code for the item.
-     * @param itemQuantity The count/amount of the item that is being purchased.
      * @param itemDescription The descriptive information about the item.
      * @param itemPrice The price of the item.
      */
-    public ItemDTO(String name, int itemID, int itemQuantity, String itemDescription, int itemPrice){
+    public ItemDTO(String name, int itemID, String itemDescription, double itemPrice, double VAT){
         this.name = name;
         this.itemID = itemID;
-        this.itemQuantity = itemQuantity;
         this.itemDescription = itemDescription;
         this.itemPrice = itemPrice;
+        this.VAT = VAT;
     }
 
-    boolean matches(ItemDTO itemFound) {
-        if(itemFound.getName() != null && !itemFound.getName().equals(name)) {
-            return false;
-        }
-        if(!(itemFound.getItemID() < 0) && itemFound.getItemID() != itemID) {
-            return false;
-        }
-        if(!(itemFound.getItemQuantity() < 0) && itemFound.getItemQuantity() != itemQuantity) {
-            return false;
-        }
-        if(itemFound.getItemDescription() != null && !itemFound.getItemDescription().equals(itemDescription)) {
-            return false;
-        }
-        if(!(itemFound.getItemPrice() < 0) && itemFound.getItemPrice() != itemPrice) {
-            return false;
-        }
-        return true;
+    /**
+     * The method add all information about an item to a string.
+     * @return a string of one item information containing name, itemID, quantity, description and price of an item.
+     */
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Name: " + name + ",");
+        builder.append("ItemID: " + itemID + ", ");
+        builder.append("Item description: " + itemDescription + ", ");
+        builder.append("Item price: " + itemPrice + ".");
+
+        return builder.toString();
     }
 
     /**
@@ -62,14 +56,6 @@ public class ItemDTO {
     }
 
     /**
-     * Method retrieves the amount / count of one item.
-     * @return Method returns the itemQuantity.
-     */
-    public int getItemQuantity() {
-        return itemQuantity;
-    }
-
-    /**
      * Method retrieves the description of one item.
      * @return Method returns the itemDescription.
      */
@@ -81,7 +67,11 @@ public class ItemDTO {
      * Method retrieves the price of one item.
      * @return Method returns the item price.
      */
-    public int getItemPrice() {
+    public double getItemPrice() {
         return itemPrice;
+    }
+
+    public double getVAT() {
+        return VAT;
     }
 }

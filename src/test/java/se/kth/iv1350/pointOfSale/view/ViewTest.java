@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import se.kth.iv1350.pointOfSale.controller.Controller;
+import se.kth.iv1350.pointOfSale.integration.Printer;
+import se.kth.iv1350.pointOfSale.integration.Register;
+import se.kth.iv1350.pointOfSale.integration.SystemCreator;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -15,12 +18,14 @@ public class ViewTest {
     private View instanceToTest;
     private ByteArrayOutputStream printOutSale; // store System print as an array to read.
     private PrintStream originalSysOut;
+    private Register registerTest;
+    private Printer printerTest;
+    private SystemCreator systemCreatorTest;
 
     @BeforeEach
     public void setUp() {
-        Controller contr = new Controller();
+        Controller contr = new Controller(registerTest, printerTest, systemCreatorTest);
         instanceToTest = new View(contr);
-
         printOutSale = new ByteArrayOutputStream();
         PrintStream inMemSysOut = new PrintStream(printOutSale);
         originalSysOut = System.out;
