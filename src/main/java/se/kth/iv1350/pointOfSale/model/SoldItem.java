@@ -51,6 +51,10 @@ public class SoldItem {
         return item.getItemPrice() * itemQuantity;
     }
 
+    /**
+     * Get the price for sold item and its quantity including VAT.
+     * @return price of total sold item of that kind with VAT.
+     */
     public double getVATAmount() {
         return item.getVAT() * getSubTotal();
     }

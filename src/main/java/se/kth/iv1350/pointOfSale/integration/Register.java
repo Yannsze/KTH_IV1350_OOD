@@ -27,6 +27,10 @@ public class Register {
         return amountPaid - sale.getTotalPriceInclVAT();
     }
 
+    /**
+     * Method getter for retrieving balance in the register.
+     * @return amount balance in the register.
+     */
     public double getBalance() {
         return balance;
     }

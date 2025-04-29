@@ -37,34 +37,60 @@ public class Sale {
         return currentSaleList;
     }
 
+    /**
+     * Gets the running total of the sale, excluding VAT.
+     * @return the running total price without VAT.
+     */
     public double getRunningTotal () {
         return this.runningTotal;
     }
 
+    /**
+     * Gets the total price including VAT.
+     * @return the total price with VAT included.
+     */
     public double getTotalPriceInclVAT() {
         return this.totalPriceInclVAT;
     }
 
+    /**
+     * Gets the discount database used to calculate discounts.
+     * @return the discount database.
+     */
     public DiscountDatabase getDiscountDatabase() {
         return this.discountDatabase;
     }
 
+    /**
+     * Gets the total discount applied to the sale.
+     * @return the total discount amount.
+     */
     public double getTotalDiscount() {
         return totalDiscount;
     }
 
+    /**
+     * Gets the total price after all discounts have been applied.
+     * @return the discounted total price.
+     */
     public double getDiscountedTotalPrice() {
         return discountedTotalPrice;
     }
 
+    /**
+     * Gets the payment associated with this sale.
+     * @return the payment object.
+     */
     public Payment getPayment() {
         return this.payment;
     }
 
     /**
-     * Adds an item to the current sale. If the item already exists, its quantity is increased.
-     * @param item is the item being added to the sale.
-     * @param quantity the number of units of the item to add.
+     * Adds an item to the current sale.
+     * If the item already exists in the list, its quantity is increased instead of adding a new entry.
+     *
+     * @param item the item being added to the sale.
+     * @param quantity the quantity of the item to add.
      */
     public void addItem (ItemDTO item, int quantity) {
         for (int i = 0; i < currentSaleList.size(); i++) {
@@ -84,13 +110,18 @@ public class Sale {
     }
 
     /**
-     * The method gets the last item added to the list.
-     * @return the sold item of the last added object.
+     * Retrieves the last item that was added to the sale.
+     * @return the last added sold item.
      */
     public SoldItem lastAdded () {
         return currentSaleList.get(currentSaleList.size() - 1);
     }
 
+
+    /**
+     * Applies discounts to the sale based on customer ID and item-specific rules.
+     * @param customerID the ID of the customer eligible for discount.
+     */
     public void discount(int customerID) {
         double totalBeforeDiscount = this.runningTotal;
         double customerDiscountRate = discountDatabase.getCustomerDiscount(customerID);
@@ -110,14 +141,27 @@ public class Sale {
         discountedTotalPrice = totalPriceInclVAT - totalDiscount;
     }
 
+    /**
+     * Registers a payment for the sale.
+     * @param amountPaid the amount paid by the customer.
+     */
     public void pay(double amountPaid) {
         this.payment = new Payment(amountPaid);
     }
 
+    /**
+     * Creates a receipt for the completed sale.
+     * @return the generated receipt.
+     */
     public Receipt createReceipt() {
         return new Receipt(this);
     }
 
+    /**
+     * Prints detailed information about a sold item, including its price, VAT, and description.
+     * @param soldItem the sold item to print information about.
+     * @return a formatted string containing the sold item details.
+     */
     public String printSoldItemInformation(SoldItem soldItem) {
         return "Add 1 item with item id: " + soldItem.getItem().getItemID() + "\n" +
                 "ItemID: " + soldItem.getItem().getItemID() + "\n" +

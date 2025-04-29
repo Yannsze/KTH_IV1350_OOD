@@ -36,7 +36,7 @@
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory> <!-- Added source directory -->
-        <testSourceDirectory>src/test/java</testSourceDirectory> <!-- Added test source directory -->
+        <testSourceDirectory>src/test</testSourceDirectory>
         <plugins>
             <!-- Added maven-compiler-plugin for proper compilation -->
             <plugin>

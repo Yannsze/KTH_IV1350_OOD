@@ -8,6 +8,10 @@ import se.kth.iv1350.pointOfSale.model.SoldItem;
  */
 public class AccountingSystem {
 
+    /**
+     * Updates the accounting system.
+     * @param soldItems a list of items sold for a single sale.
+     */
     public void recordTransaction(ArrayList<SoldItem> soldItems) {
 
     }

@@ -6,19 +6,27 @@ import java.util.ArrayList;
 
 /**
  * A single receipt for one sale.
+ * The receipt contains information about the sold items, time of sale,
+ * payment, VAT, discounts, and the total amount.
  */
 public class Receipt {
     private Sale sale;
     private ArrayList<SoldItem> soldItems;
 
     /**
-     * This creates an instance of receipt.
+     * Creates an instance of a receipt based on a sale.
+     * @param sale the sale that this receipt summarizes.
      */
     public Receipt(Sale sale) {
         this.sale = sale;
         this.soldItems = sale.getCurrentSaleList();
     }
 
+    /**
+     * Prints the full receipt, including all sold items, total price,
+     * VAT, applied discounts, payment information, and change.
+     * @return a formatted receipt as a String.
+     */
     public String printReceipt() {
         StringBuilder builder = new StringBuilder();
         builder.append("-----   Receipt   -----\n");

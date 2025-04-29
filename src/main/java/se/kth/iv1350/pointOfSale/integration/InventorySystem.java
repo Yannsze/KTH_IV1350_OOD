@@ -32,6 +32,10 @@ public class InventorySystem {
         return null;
     }
 
+    /**
+     * Update the inventory system of item sold.
+     * @param soldItems a list of sold items from a single sale.
+     */
     public void updateInventorySystem(ArrayList<SoldItem> soldItems) {
 
     }

@@ -69,14 +69,26 @@ public class Controller {
         return sale.getRunningTotal();
     }
 
+    /**
+     * Ends the sale by returning the total price including VAT.
+     * @return total price including VAT of the sale.
+     */
     public double endSale() {
         return sale.getTotalPriceInclVAT();
     }
 
+    /**
+     * Applies discount to the sale.
+     * @param customerID the customer ID for retrieving potential discounts.
+     */
     public void applyDiscount(int customerID) {
         sale.discount(customerID);
     }
 
+    /**
+     * Initializes the payment for one single sale, updates the external systems, creates the print the receipt.
+     * @param amountPaid the amount in cash that is paid for the sale.
+     */
     public void initializePayment(double amountPaid) {
         sale.pay(amountPaid);
         systemCreator.getInventorySystem().updateInventorySystem(sale.getCurrentSaleList());

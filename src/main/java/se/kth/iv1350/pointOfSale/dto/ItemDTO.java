@@ -71,6 +71,10 @@ public class ItemDTO {
         return itemPrice;
     }
 
+    /**
+     * Method retrieves the VAT for item.
+     * @return Method returns VAT for the item.
+     */
     public double getVAT() {
         return VAT;
     }
