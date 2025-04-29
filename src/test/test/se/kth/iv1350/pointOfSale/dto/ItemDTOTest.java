@@ -1,6 +1,7 @@
-package se.kth.iv1350.pointOfSale.dto;
+package test.se.kth.iv1350.pointOfSale.dto;
 
 import org.junit.jupiter.api.Test;
+import se.kth.iv1350.pointOfSale.dto.ItemDTO;
 
 import static org.junit.jupiter.api.Assertions.*;
 
