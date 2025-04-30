@@ -19,7 +19,7 @@ The project is divided into two main tasks:
 - Focused on meaningful methods and business logic rather than simple data access.
 - Maven is used for dependency management and build automation.
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - Java
 - IntelliJ IDEA
